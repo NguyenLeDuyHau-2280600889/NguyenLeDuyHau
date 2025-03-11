@@ -1,14 +1,14 @@
-from flask import Flask, render_template, request, json # type: ignore
-from cipher.caesar import CaesarCipher  # type: ignore
+from flask import Flask, render_template, request, json 
+from cipher.caesar import CaesarCipher  
 
 app = Flask(__name__)
 
-# router routes for home page
+
 @app.route("/")
 def home():
     return render_template('index.html')
 
-# router routes for caesar cypher
+
 @app.route("/caesar")
 def caesar():
     return render_template('caesar.html')
@@ -29,6 +29,6 @@ def caesar_decrypt():
     decrypted_text = Caesar.decrypt_text(text, key)
     return f"text: {text}<br/>key: {key}<br/>decrypted text: {decrypted_text}"
 
-# main function
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5050, debug=True)
